@@ -1,43 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
-import MainPage from "./pages/BaggageListPage";
-import BaggagePage from "./pages/BaggageDetailsPage";
-import HomePage from "./pages/HomePage";
+import ShipDetailsPage from "./pages/ShipDetailsPage";
+import ShipListPage from "./pages/ShipListPage";
 
-// const router = createBrowserHashRouter([
-//   {
-//     path: "/",
-//     element: <HomePage></HomePage>,
-//   },
-//   {
-//     path: "/baggage",
-//     element: <MainPage></MainPage>,
-//   },
-//   {
-//     path: "/baggage/:id",
-//     element: <BaggagePage></BaggagePage>,
-//   },
-// ]);
-const { invoke } = (window as any).__TAURI__.tauri;
 const App: React.FC = () => {
-  useEffect(() => {
-    invoke("tauri", { cmd: "create" })
-      .then((response: any) => console.log(response))
-      .catch((error: any) => console.log(error));
-    return () => {
-      invoke("tauri", { cmd: "close" })
-        .then((response: any) => console.log(response))
-        .catch((error: any) => console.log(error));
-    };
-  }, []);
   return (
     <HashRouter>
       <Routes>
-        <Route path="/" element={<HomePage></HomePage>}></Route>
-        <Route path="/baggage" element={<MainPage></MainPage>}></Route>
+        <Route path="/" element={<ShipListPage></ShipListPage>}></Route>
         <Route
-          path="/baggage/:id"
-          element={<BaggagePage></BaggagePage>}
+          path="/ship/:id"
+          element={<ShipDetailsPage></ShipDetailsPage>}
         ></Route>
       </Routes>
     </HashRouter>

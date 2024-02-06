@@ -11,19 +11,19 @@ import {
 import styles from "./NavbarComponent.module.css";
 
 interface NavbarComponentProps {
-  onSearch: (searchCode: string) => void;
+  onSearch: (shipName: string) => void;
 }
 
 const NavbarComponent: React.FC<NavbarComponentProps> = ({ onSearch }) => {
-  const [searchCode, setSearchCode] = useState<string>("");
+  const [shipName, setShipName] = useState<string>("");
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSearch(searchCode);
+    onSearch(shipName);
   };
 
-  const handleShowAllBaggage = () => {
-    setSearchCode(""); // Очищаем searchCode
+  const handleShowAllShip = () => {
+    setShipName(""); // Очищаем shipName
     onSearch(""); // Вызываем onSearch с пустой строкой
   };
 
@@ -33,22 +33,22 @@ const NavbarComponent: React.FC<NavbarComponentProps> = ({ onSearch }) => {
         <Navbar.Toggle className={styles.toggleButton} />
         <Navbar.Collapse className={styles.collapse}>
           <Nav className={styles.nav}>
-            <Nav.Link className={styles.navLink} onClick={handleShowAllBaggage}>
-              Весь багаж
+            <Nav.Link className={styles.btn} onClick={handleShowAllShip}>
+              Все суда
             </Nav.Link>
           </Nav>
           <Form className={styles.form} onSubmit={handleSearch}>
             <FormControl
               type="search"
-              placeholder="Поиск"
+              placeholder="Введите название судна"
               className={styles.searchInput}
               aria-label="Поиск"
-              value={searchCode}
-              onChange={(e) => setSearchCode(e.target.value)}
+              value={shipName}
+              onChange={(e) => setShipName(e.target.value)}
             />
             <Button
               variant="outline-success"
-              className={styles.searchButton}
+              className={styles.btn}
               type="submit"
             >
               Поиск
