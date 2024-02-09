@@ -8,7 +8,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "BagTracker",
+    "productName": "ShipStation",
     "version": "0.1.0"
   },
   "tauri": {
@@ -30,7 +30,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.yourcompany.bagtracker",
+      "identifier": "com.yourcompany.shipstation",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -59,7 +59,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "BagTracker",
+        "title": "ShipStation",
         "width": 800
       }
     ]
